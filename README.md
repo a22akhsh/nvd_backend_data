@@ -23,7 +23,7 @@ All above analysis requirements are handled graphically also using plotly and ma
 Project Architecture
 --------
 The project is based on MVC (Model, View and Controller) framework.
-This nvd_view is model part of the system which interacts with interal and external databases.
+This nvd_backend is model part of the system which interacts with interal and external databases.
 Sends response towards controller with relevant data as per use case and then
 the controller based on use case creates response with appropriate
 data and status code towards view
