@@ -21,6 +21,13 @@ spec:
           runAsNonRoot: true
           runAsUser: 1000
           runAsGroup: 1000
+        volumeMounts:
+          - name: data-volume
+            mountPath: /src
+      volumes: # Define the volumes section
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: local-pvc  # Reference the PVC name
 
 
 ---
@@ -39,4 +46,16 @@ spec:
     targetPort: 8081
   type: NodePort
 
+---
 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: local-storage
